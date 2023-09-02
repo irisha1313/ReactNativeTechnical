@@ -12,11 +12,11 @@ export const api = createApi({
 	}),
 	endpoints: builder => ({
 		getPhotos: builder.query<IPhotos, string>({
-			query: (seatch: string) => ({
-				url: `/photos?albumId=1`,
-				params: {
-					q: seatch
-				}
+			query: () => ({
+				url: `/photos?albumId=1`
+				// params: {
+				// 	q: seatch
+				// }
 			})
 		})
 	})

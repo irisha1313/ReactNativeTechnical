@@ -3,7 +3,8 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 const initialState: PhotoSliceState = {
 	item: [],
-	favo: []
+	favo: [],
+	searchValue: ""
 }
 
 export const photoSlice = createSlice({
@@ -22,7 +23,9 @@ export const photoSlice = createSlice({
 			const isExist = state.favo.some(fav => fav.id === action.payload.id)
 			state.favo = state.favo.filter(item => item.id !== action.payload.id)
 		},
-
+		setSearchValue(state, action: PayloadAction<string>) {
+			state.searchValue = action.payload
+		},
 		clearAllfavo: state => {
 			state.favo = []
 		}

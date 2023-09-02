@@ -1,17 +1,19 @@
-import { FC, useEffect, useState } from "react"
+import { FC, useEffect } from "react"
 import { ScrollView, Text, TextInput, View } from "react-native"
 
 import { PhotoItem } from "@/components/UI/photo/photoItem"
+import { useActions } from "@/hooks/useActions"
+import { useTypedSelector } from "@/hooks/useTypedSelector"
 import { useGetPhotosQuery } from "@/store/slices/api/photo/photoApi"
 import React from "react"
 
 interface IHome {}
 export const Home: FC<IHome> = ({}) => {
-	const [searchValue, setSearchValue] = useState("")
-	const [text, setText] = useState("")
-	const { data, isLoading, isError } = useGetPhotosQuery(text)
+	const { setSearchValue } = useActions()
+	const searchValue = useTypedSelector(state => state.photo.searchValue)
+	const { data, isLoading, isError } = useGetPhotosQuery("")
 
-	useEffect(() => {}, [text, data])
+	useEffect(() => {}, [searchValue, data])
 	return (
 		<>
 			{isLoading ? (

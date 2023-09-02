@@ -11,4 +11,5 @@ export interface IPhoto {
 export interface PhotoSliceState {
 	favo: IPhotos
 	item: IPhotos
+	searchValue: string
 }
