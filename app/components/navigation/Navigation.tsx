@@ -15,7 +15,7 @@ export const Navigation: FC<INavigation> = ({}) => {
 	const favoCount = useTypedSelector(state => state.photo.favo)
 	return (
 		<NavigationContainer>
-			<Tab.Navigator>
+			<Tab.Navigator screenOptions={{}}>
 				<Tab.Screen
 					name={EScreens.HOME}
 					component={Home}

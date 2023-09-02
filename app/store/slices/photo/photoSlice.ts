@@ -23,7 +23,7 @@ export const photoSlice = createSlice({
 			state.favo = state.favo.filter(item => item.id !== action.payload.id)
 		},
 
-		clearAllFavo: state => {
+		clearAllfavo: state => {
 			state.favo = []
 		}
 	}

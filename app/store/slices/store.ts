@@ -1,17 +1,21 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit"
+import { persistReducer, persistStore } from "redux-persist"
 
+import AsyncStorage from "@react-native-async-storage/async-storage"
+import { configureStore } from "@reduxjs/toolkit"
 import { api } from "./api/photo/photoApi"
-import { photoSlice } from "./photo/photoSlice"
+import { rootReducer } from "./rootReducer"
 
-const rootReducer = combineReducers({
-	photo: photoSlice.reducer,
-	[api.reducerPath]: api.reducer
-})
+const persistConfig = {
+	key: "root",
+	storage: AsyncStorage
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({
-	reducer: rootReducer,
+	reducer: persistedReducer,
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware().concat(api.middleware)
 })
-
+export const persistor = persistStore(store)
 export type RootState = ReturnType<typeof store.getState>

@@ -18,13 +18,15 @@ export const PhotoItem: FC<IphotoItem> = ({ item }) => {
 	return (
 		<View
 			style={{
-				borderBlockColor: "#5555",
 				borderWidth: 1,
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
+				borderBlockColor: "#5555",
 				maxWidth: 300,
 				width: "100%",
 				borderRadius: 10,
-				margin: 10,
-				alignItems: "center"
+				margin: 10
 			}}
 		>
 			<Text
