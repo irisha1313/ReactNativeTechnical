@@ -6,15 +6,17 @@ import { useActions } from "@/hooks/useActions"
 import { useTypedSelector } from "@/hooks/useTypedSelector"
 import { AntDesign } from "@expo/vector-icons"
 import { Link } from "@react-navigation/native"
+import { useSafeAreaInsets } from "react-native-safe-area-context"
 
 interface IFavorites {}
 export const Favorites: FC<IFavorites> = ({}) => {
 	const favorits = useTypedSelector(state => state.photo.favo)
 	const { dislikePost, clearAllfavo } = useActions()
+	const insets = useSafeAreaInsets()
 	return (
-		<View>
+		<View style={{ marginBottom: 50 }}>
 			{favorits.length ? (
-				<View className="items-center ">
+				<View className="items-center mb-10">
 					<>
 						<AntDesign
 							name="delete"
